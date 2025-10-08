@@ -38,7 +38,6 @@ class FamilyUtils:
         # Initialize basic operator settings
         self.ownerComp.tags.add('GGen')  # Language Operator tag
         self.setup_about_page()
-        #self.initialize_chattd()
         self.set_color()
         
     def create_parameter(self, par_name, par_type, page='Custom', default=None, norm_min=None, norm_max=None, size=1, menu_items=None, label=None, order=None, replace=False, section=None, menuNames=None, menuLabels=None, help_text=None, help = None):
@@ -191,32 +190,7 @@ class FamilyUtils:
             text_dat = self.ownerComp.create(textDAT, dat_name)
         return text_dat
         
-    def initialize_chattd(self):
-        """Connect to ChatTD operator in parent network."""
-        chattd_par = self.create_parameter('Chattd', 'op', 'About',
-                                         label='ChatTD Operator', section= True)       
-        # Check if Chattd parameter is already set
-        try:
-            if chattd_par.eval():
-                chattd_op = op(chattd_par.eval())
-                if chattd_op and 'ChatTD' in chattd_op.tags:
-                    return
-        except:
-            pass
-        
-        # If not set or incorrectly set, check op.LOP.op('ChatTD')
-        lop_chattd = op.LOP.op('ChatTD')
-        if lop_chattd and 'ChatTD' in lop_chattd.tags:
-            chattd_par.expr = "op.LOP.op('ChatTD')"
-            return
-            
-        # If still not found, search parent network
-        parent = self.ownerComp.parent()
-        chattd_ops = [child for child in parent.findChildren(tags=['ChatTD'])]
-        
-        if chattd_ops:
-            chattd_op = chattd_ops[0]  # Use the first found ChatTD operator
-            chattd_par.val = chattd_op.name  # Set to name, not path
+
             
     def setup_about_page(self):
         """Configure the About page with version info and standard parameters."""

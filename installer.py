@@ -32,7 +32,7 @@ class GenericInstallerEXT:
     GenericInstallerEXT is a flexible installer extension for TouchDesigner that allows
     the installation and uninstallation of custom operator families dynamically.
     
-    It replicates the functionality of specific installers like LOPExt but is designed
+    It replicates the functionality of specific installers but is designed
     to handle any operator family by specifying parameters such as family name and color.
     """
     def __init__(self, ownerComp, family_name, color, compatible_types=None, connection_map=None):
@@ -41,10 +41,10 @@ class GenericInstallerEXT:
 
         Args:
             ownerComp (COMP): The component to which this extension is attached.
-            family_name (str): The name of the operator family (e.g., 'LOP', 'CHATTD').
+            family_name (str): The name of the operator family ('e.g., 'LOPS', 'RayTK'').
             color (list or tuple): The color to associate with the operator family.
         """
-        #print(f"Initializing GenericInstallerEXT for {family_name}")
+        
         if hasattr(op,'Logger'):
             op.Logger.Info(f"Initializing GenericInstallerEXT for {family_name}")
         else:

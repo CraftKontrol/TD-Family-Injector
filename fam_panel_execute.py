@@ -97,42 +97,11 @@ def onValueChange(panelValue, prev):
     lookup_name = display_name
     normalized_name = lookup_name.replace(' ', '_')
     
-
-    # # Manage Config case
-    # if lookup_name == 'ggen':
-    #     op.GGen.openParameters()
-    #     parent.OPCREATE.par.winclose.pulse()
-    #     return
-
-
-    # # Manage UI case
-    # if lookup_name == 'ui':
-    #     op.GGen.op('custom_operators').op('ui').par.winopen.pulse()
-    #     parent.OPCREATE.par.winclose.pulse()
-    #     return
-
-    # # Manage common networks cases
-    # if lookup_name == 'splatmaps':
-    #      #check if globalshortcut exists
-    #      if hasattr(op, 'SplatmapsNetwork'):
-    #         # open floating network
-    #         p = ui.panes.createFloating(type=PaneType.NETWORKEDITOR, name="GGen Splatmap Network")
-    #         p.owner = op.SplatmapsNetwork.op('UserNetwork')
-    #         parent.OPCREATE.par.winclose.pulse()
-    #         return    
-    # if lookup_name == 'terrain':
-    #     if hasattr(op, 'TerrainNetwork'):
-    #         # open floating network
-    #         p = ui.panes.createFloating(type=PaneType.NETWORKEDITOR, name="GGen Terrain Network")
-    #         p.owner = op.TerrainNetwork.op('UserNetwork')
-    #         parent.OPCREATE.par.winclose.pulse()
-    #         return
-
     if hasattr(op.OPNAME, 'PlaceOp'):
         if not op.OPNAME.PlaceOp(panelValue, lookup_name):
             parent.OPCREATE.par.winclose.pulse()
             return
-    #print(lookup_name)
+
     master = op.OPNAME.op('custom_operators').findChildren(name=lookup_name, maxDepth=1)[0]
     clone = op.OPNAME.copy(master, name=normalized_name+'1')
     clone.allowCooking = True

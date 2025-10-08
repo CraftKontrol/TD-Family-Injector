@@ -41,8 +41,6 @@ def onCook(scriptOp):
 			newStruct[1].append(node)
 		struct.append(newStruct)
 
-	
-
 	header = []
 	for Categories, ops in struct:
 		# Add a column for each category in struct
@@ -53,6 +51,7 @@ def onCook(scriptOp):
 	for Categories, ops in struct:
 		if len(ops) > maxRows:
 			maxRows = len(ops)	
+
 	# Add rows for each operator in each category
 	for i in range(maxRows):
 		newRow = []

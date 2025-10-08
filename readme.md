@@ -1,17 +1,24 @@
 ﻿# TD Family Injector
-## Version 1.002
+## Version 1.003
 ### Author: Arnaud Cassone © Artcraft Visuals
 A TouchDesigner operator family injector tool that helps manage and inject custom operator families into TouchDesigner projects.
 It adds operators directly into the Op Menu for easy access in a new "custom" section with predefined name and color.
 
 Originally designed by Tekt for Raytk and modified by DotSimulate for Lops then adapted for general use by me.
 
-features:
+## features:
 - Inject custom operator families into TouchDesigner projects
 - Add operators to the Op Menu under a "custom" section
 - Predefine operator names and colors for easy identification
 - Simple GUI for managing and injecting operator families
 
+## Usage:
+- Clone the repository in your prefered folder
+- Drag and drop the TOX files in your TD project. (it will move it to the root of your project)
+- Enter the family name and color in the parameters
+- Put your custom operators in the "custom_operators" container inside the Operator Network
+- Click "Family Install" to add the operators to the Op Menu
+- Access the components from the Op Menu under the given name.
 
 ## Parameters
 | Parameter | Type | Description |
